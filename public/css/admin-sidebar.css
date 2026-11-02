@@ -1,0 +1,352 @@
+/* ============================================================
+   ADMIN SIDEBAR — PREMIUM EDITION
+   ============================================================ */
+
+/* ---------- SIDEBAR CONTAINER ---------- */
+.admin-sidebar-fixed {
+    width: 272px;
+    min-height: 100vh;
+    background: linear-gradient(180deg, #ffffff 0%, #fafbff 100%);
+    padding: 20px 16px;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 100;
+    border-right: 1px solid #e8eaf0;
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow-y: auto;
+    box-shadow: 2px 0 24px rgba(124, 58, 237, 0.04);
+}
+.admin-sidebar-fixed::-webkit-scrollbar { width: 4px; }
+.admin-sidebar-fixed::-webkit-scrollbar-track { background: transparent; }
+.admin-sidebar-fixed::-webkit-scrollbar-thumb {
+    background: #e8eaf0;
+    border-radius: 4px;
+}
+
+/* ---------- BRAND HEADER ---------- */
+.admin-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 8px 22px;
+    border-bottom: 1px solid #eef0f5;
+    margin-bottom: 20px;
+    text-decoration: none;
+    color: inherit;
+    transition: opacity 0.2s;
+}
+.admin-brand:hover { opacity: 0.85; }
+
+.admin-brand-icon {
+    width: 46px;
+    height: 46px;
+    background: linear-gradient(135deg, #7c3aed 0%, #ec4899 100%);
+    border-radius: 14px;
+    display: grid;
+    place-items: center;
+    color: #fff;
+    flex-shrink: 0;
+    box-shadow:
+        0 8px 20px rgba(124, 58, 237, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+.admin-brand-icon::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, transparent 40%, rgba(255,255,255,0.2) 50%, transparent 60%);
+    animation: shimmer 3s ease-in-out infinite;
+}
+@keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+.admin-brand-icon svg {
+    width: 22px;
+    height: 22px;
+    position: relative;
+    z-index: 1;
+}
+.admin-brand-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+}
+.admin-brand-title {
+    color: #0f172a;
+    font-weight: 900;
+    font-size: 1rem;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+}
+.admin-brand-sub {
+    color: #94a3b8;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-top: 1px;
+}
+
+/* ---------- NAV ---------- */
+.admin-nav {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.admin-nav-label {
+    padding: 14px 12px 8px;
+    font-size: 0.66rem;
+    font-weight: 800;
+    color: #94a3b8;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 4px;
+}
+.admin-nav-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, #eef0f5, transparent);
+}
+.admin-nav-label:first-child {
+    margin-top: 0;
+    padding-top: 4px;
+}
+
+.admin-nav-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 11px 12px;
+    border-radius: 11px;
+    color: #64748b;
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+.admin-nav-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 3px;
+    height: 0;
+    background: linear-gradient(180deg, #8b5cf6, #ec4899);
+    border-radius: 0 3px 3px 0;
+    transition: height 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.admin-nav-item:hover:not(.active) {
+    background: #f8fafc;
+    color: #1e293b;
+    transform: translateX(2px);
+}
+.admin-nav-item:hover:not(.active)::before {
+    height: 40%;
+}
+.admin-nav-item.active {
+    background: linear-gradient(135deg, #7c3aed 0%, #ec4899 100%);
+    color: #fff;
+    box-shadow:
+        0 8px 24px rgba(124, 58, 237, 0.35),
+        0 2px 8px rgba(236, 72, 153, 0.15);
+    transform: translateX(2px);
+}
+.admin-nav-item.active::before {
+    background: rgba(255, 255, 255, 0.5);
+    height: 60%;
+}
+
+.admin-nav-icon {
+    width: 22px;
+    height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: transform 0.25s;
+}
+.admin-nav-icon svg {
+    width: 100%;
+    height: 100%;
+}
+.admin-nav-item:hover:not(.active) .admin-nav-icon {
+    transform: scale(1.1);
+}
+.admin-nav-item.active .admin-nav-icon {
+    transform: scale(1.05);
+}
+
+.admin-nav-text {
+    flex: 1;
+    min-width: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.admin-nav-badge {
+    margin-left: auto;
+    background: #ef4444;
+    color: #fff;
+    font-size: 0.66rem;
+    font-weight: 900;
+    padding: 2px 8px;
+    border-radius: 999px;
+    min-width: 20px;
+    text-align: center;
+    line-height: 1.4;
+    box-shadow: 0 2px 8px rgba(239, 68, 68, 0.4);
+    animation: badgePulse 2s infinite;
+}
+@keyframes badgePulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.06); }
+}
+.admin-nav-item.active .admin-nav-badge {
+    background: rgba(255, 255, 255, 0.28);
+    box-shadow: none;
+    animation: none;
+}
+
+.admin-nav-item-muted {
+    opacity: 0.7;
+    font-size: 0.84rem;
+}
+.admin-nav-item-muted:hover {
+    opacity: 1;
+}
+
+/* ---------- FOOTER ---------- */
+.admin-sidebar-footer {
+    padding-top: 16px;
+    border-top: 1px solid #eef0f5;
+    margin-top: 16px;
+}
+
+.admin-logout-btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 11px 14px;
+    background: transparent;
+    color: #ef4444;
+    border: 1.5px solid #fecaca;
+    border-radius: 11px;
+    font-family: inherit;
+    font-size: 0.84rem;
+    font-weight: 800;
+    cursor: pointer;
+    transition: all 0.22s;
+    text-align: left;
+}
+.admin-logout-btn svg {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    transition: transform 0.22s;
+}
+.admin-logout-btn:hover {
+    background: #fef2f2;
+    border-color: #ef4444;
+    transform: translateX(2px);
+}
+.admin-logout-btn:hover svg {
+    transform: translateX(3px);
+}
+
+/* ---------- OVERLAY (mobile) ---------- */
+.sidebar-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.5);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    z-index: 99;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+.sidebar-overlay.show {
+    display: block;
+    opacity: 1;
+}
+
+/* ---------- MOBILE TOGGLE BUTTON ---------- */
+.admin-menu-toggle {
+    display: none;
+    background: #fff;
+    border: 1px solid #e8eaf0;
+    color: #1e293b;
+    width: 42px;
+    height: 42px;
+    border-radius: 11px;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+    flex-shrink: 0;
+    transition: all 0.2s;
+}
+.admin-menu-toggle:hover {
+    background: #f8fafc;
+    border-color: #d8dce8;
+}
+.admin-menu-toggle svg {
+    width: 20px;
+    height: 20px;
+    stroke: currentColor;
+    stroke-width: 2;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 768px) {
+    .admin-sidebar-fixed {
+        transform: translateX(-100%);
+        box-shadow: 4px 0 32px rgba(0, 0, 0, 0.2);
+        width: 280px;
+    }
+    .admin-sidebar-fixed.open {
+        transform: translateX(0);
+    }
+    .admin-menu-toggle {
+        display: inline-flex;
+    }
+    body.sidebar-open {
+        overflow: hidden;
+    }
+}
+
+/* ---------- ANIMATION ---------- */
+@keyframes fadeSlideIn {
+    from { opacity: 0; transform: translateX(-8px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+.admin-nav-item {
+    animation: fadeSlideIn 0.3s ease both;
+}
+.admin-nav-item:nth-child(2) { animation-delay: 0.02s; }
+.admin-nav-item:nth-child(3) { animation-delay: 0.04s; }
+.admin-nav-item:nth-child(4) { animation-delay: 0.06s; }
+.admin-nav-item:nth-child(5) { animation-delay: 0.08s; }
+.admin-nav-item:nth-child(6) { animation-delay: 0.1s; }
